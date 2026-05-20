@@ -3,7 +3,6 @@ import { heroDashboardImg } from "@/lib/product-screens";
 import { heroFloatingStats } from "@/lib/landing-content";
 import { FloatingStatCard } from "@/components/landing/FloatingStatCard";
 
-/** Pontos do hub (viewBox 0–100) — cantos alinhados aos cards */
 const HUB = { x: 50, y: 50 } as const;
 const NODES = [
   { x: 14, y: 16 },
@@ -13,20 +12,20 @@ const NODES = [
 ] as const;
 
 const CARD_POSITIONS = [
-  "top-2 left-0 sm:top-4 sm:-left-1 lg:-left-4",
-  "top-[22%] right-0 sm:top-[24%] sm:-right-1 lg:-right-4",
-  "bottom-[28%] left-0 sm:bottom-[30%] sm:-left-1 lg:-left-4",
-  "bottom-4 right-0 sm:bottom-6 sm:-right-1 lg:-right-6",
+  "top-0 left-0 sm:top-4 sm:-left-1 lg:-left-4",
+  "top-[20%] right-0 sm:top-[24%] sm:-right-1 lg:-right-4",
+  "bottom-[26%] left-0 sm:bottom-[30%] sm:-left-1 lg:-left-4",
+  "bottom-0 right-0 sm:bottom-6 sm:-right-1 lg:-right-6",
 ] as const;
 
 export function HeroHubVisual() {
   return (
-    <div className="relative mx-auto w-full max-w-xl px-2 sm:max-w-2xl sm:px-0">
-      <div className="absolute -inset-8 rounded-[2rem] bg-brand-grad opacity-20 blur-3xl sm:-inset-10" />
+    <div className="relative mx-auto w-full max-w-xl px-1 sm:max-w-2xl sm:px-0">
+      <div className="absolute -inset-6 rounded-[2rem] bg-brand-grad opacity-20 blur-3xl sm:-inset-10" />
 
-      <div className="relative aspect-square w-full min-h-[300px] sm:min-h-[380px] lg:min-h-[440px]">
+      <div className="relative aspect-square w-full min-h-[300px] overflow-visible sm:min-h-[380px] lg:min-h-[440px]">
         <svg
-          className="pointer-events-none absolute inset-0 z-[15] hidden h-full w-full text-brand sm:block"
+          className="pointer-events-none absolute inset-0 z-[15] h-full w-full text-brand"
           viewBox="0 0 100 100"
           preserveAspectRatio="xMidYMid meet"
           aria-hidden
@@ -58,23 +57,11 @@ export function HeroHubVisual() {
                 strokeDasharray="1.2 0.8"
                 opacity="0.9"
               />
-              <circle
-                cx={node.x}
-                cy={node.y}
-                r="1.1"
-                className="fill-brand"
-                opacity="0.9"
-              />
+              <circle cx={node.x} cy={node.y} r="1.1" className="fill-brand" opacity="0.9" />
             </g>
           ))}
 
-          <circle
-            cx={HUB.x}
-            cy={HUB.y}
-            r="2.2"
-            className="fill-brand-2"
-            opacity="0.95"
-          />
+          <circle cx={HUB.x} cy={HUB.y} r="2.2" className="fill-brand-2" opacity="0.95" />
           <circle
             cx={HUB.x}
             cy={HUB.y}
@@ -90,13 +77,13 @@ export function HeroHubVisual() {
             key={stat.label}
             value={stat.value}
             label={stat.label}
-            className={`hidden sm:block ${CARD_POSITIONS[i]}`}
+            className={CARD_POSITIONS[i]}
           />
         ))}
 
-        <div className="absolute inset-[14%] z-[6] flex items-center justify-center sm:inset-[16%]">
-          <div className="relative w-full overflow-hidden rounded-2xl border border-white/25 bg-white p-1.5 shadow-glow sm:rounded-[1.25rem] sm:p-2">
-            <div className="aspect-square w-full overflow-hidden rounded-xl sm:rounded-[1rem]">
+        <div className="absolute inset-[20%] z-[6] flex items-center justify-center sm:inset-[16%]">
+          <div className="relative w-full overflow-hidden rounded-xl border border-white/25 bg-white p-1 shadow-glow sm:rounded-[1.25rem] sm:p-2">
+            <div className="aspect-square w-full overflow-hidden rounded-lg sm:rounded-[1rem]">
               <img
                 src={heroDashboardImg}
                 alt="Vista aérea noturna de metrópole com malha urbana iluminada por iluminação pública inteligente em tons ciano e azul-turquesa"
@@ -114,14 +101,14 @@ export function HeroHubVisual() {
         </div>
 
         <div className="pointer-events-none absolute left-1/2 top-1/2 z-[30] -translate-x-1/2 -translate-y-1/2">
-          <div className="absolute -inset-3 rounded-full bg-brand-grad opacity-40 blur-xl" />
-          <div className="relative flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-2xl border border-white/30 bg-night/92 shadow-glow backdrop-blur-md sm:h-20 sm:w-20 sm:rounded-[1.15rem]">
+          <div className="absolute -inset-2 rounded-full bg-brand-grad opacity-40 blur-xl sm:-inset-3" />
+          <div className="relative flex h-14 w-14 items-center justify-center rounded-xl border border-white/30 bg-night/92 shadow-glow backdrop-blur-md sm:h-20 sm:w-20 sm:rounded-[1.15rem]">
             <img
               src={logoImg}
               alt=""
               width={56}
               height={56}
-              className="h-11 w-11 object-contain sm:h-12 sm:w-12"
+              className="h-9 w-9 object-contain sm:h-12 sm:w-12"
               aria-hidden
             />
           </div>

@@ -3,7 +3,7 @@ import { ecosystemRadialModules } from "@/lib/platform-modules";
 const HUB = { x: 50, y: 50 } as const;
 
 const nodeCardClass =
-  "surface-glass hover-lift block max-w-[132px] rounded-xl border border-white/15 px-2.5 py-2 text-left transition sm:max-w-[148px] sm:px-3 sm:py-2.5";
+  "surface-glass hover-lift block max-w-[5.5rem] rounded-lg border border-white/15 px-2 py-1.5 text-left transition sm:max-w-[148px] sm:rounded-xl sm:px-3 sm:py-2.5";
 
 function RadialModuleNode({
   title,
@@ -16,8 +16,10 @@ function RadialModuleNode({
 }) {
   const inner = (
     <>
-      <div className="text-[11px] font-semibold leading-tight text-white sm:text-xs">{title}</div>
-      <div className="mt-1 hidden text-[10px] leading-snug text-white/55 sm:block">{description}</div>
+      <div className="text-[9px] font-semibold leading-tight text-white sm:text-xs">{title}</div>
+      <div className="mt-0.5 line-clamp-2 text-[8px] leading-snug text-white/55 sm:mt-1 sm:text-[10px]">
+        {description}
+      </div>
     </>
   );
 
@@ -34,9 +36,10 @@ function RadialModuleNode({
 
 export function EcosystemHubDiagram() {
   return (
-    <div className="relative mx-auto mt-12 w-full max-w-4xl px-2 sm:px-4">
-      <div className="absolute -inset-8 rounded-[2rem] bg-brand-grad opacity-15 blur-3xl" />
-      <div className="relative aspect-square w-full min-h-[320px] sm:min-h-[400px] lg:min-h-[480px]">
+    <div className="relative mx-auto mt-12 w-full max-w-4xl px-1 sm:px-4">
+      <div className="absolute -inset-6 rounded-[2rem] bg-brand-grad opacity-15 blur-3xl sm:-inset-8" />
+
+      <div className="relative mx-auto aspect-square w-full min-h-[340px] max-w-[min(100%,22rem)] overflow-visible sm:min-h-[400px] sm:max-w-none lg:min-h-[480px]">
         <svg
           className="absolute inset-0 h-full w-full text-brand"
           viewBox="0 0 100 100"
@@ -85,17 +88,15 @@ export function EcosystemHubDiagram() {
         </svg>
 
         <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 text-center">
-          <div className="absolute -inset-4 rounded-full bg-brand-grad opacity-35 blur-xl" />
-          <div className="relative rounded-2xl border border-white/25 bg-night/90 px-5 py-3.5 shadow-glow backdrop-blur-md sm:px-6 sm:py-4">
-            <div className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50">
+          <div className="absolute -inset-3 rounded-full bg-brand-grad opacity-35 blur-xl sm:-inset-4" />
+          <div className="relative rounded-xl border border-white/25 bg-night/90 px-3.5 py-2.5 shadow-glow backdrop-blur-md sm:rounded-2xl sm:px-6 sm:py-4">
+            <div className="text-[8px] font-bold uppercase tracking-[0.2em] text-white/50 sm:text-[10px] sm:tracking-[0.25em]">
               Núcleo
             </div>
-            <div className="mt-1 text-base font-extrabold tracking-tight text-white sm:text-lg">
+            <div className="mt-0.5 text-sm font-extrabold tracking-tight text-white sm:mt-1 sm:text-lg">
               ONLIGHT
             </div>
-            <div className="mt-0.5 text-[11px] text-white/60 sm:text-xs">
-              Central operacional unificada
-            </div>
+            <div className="text-[9px] text-white/60 sm:text-xs">Central operacional unificada</div>
           </div>
         </div>
 

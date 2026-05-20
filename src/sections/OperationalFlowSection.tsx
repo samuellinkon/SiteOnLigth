@@ -5,6 +5,7 @@ import { Reveal } from "@/components/landing/Reveal";
 import { CommandCenterHero } from "@/components/landing/platform/CommandCenterHero";
 import { ModuleStoryBlock } from "@/components/landing/platform/ModuleStoryBlock";
 import { OperationalFlowRail } from "@/components/landing/platform/OperationalFlowRail";
+import { OperacaoMobileSlider } from "@/components/landing/platform/OperacaoMobileSlider";
 
 export function OperationalFlowSection() {
   const [activeStep, setActiveStep] = useState(1);
@@ -31,16 +32,17 @@ export function OperationalFlowSection() {
         </Reveal>
 
         <div className="mt-14">
+          <OperacaoMobileSlider onSlideChange={handleVisible} />
           <CommandCenterHero />
         </div>
 
-        <div className="mt-20 lg:mt-24 lg:grid lg:grid-cols-[minmax(0,260px)_minmax(0,1fr)] lg:gap-14 lg:items-start">
-            <div className="hidden lg:sticky lg:top-28 lg:block">
-              <div className="mb-4 text-xs font-semibold uppercase tracking-widest text-ink-soft">
-                Fluxo operacional
-              </div>
-              <OperationalFlowRail activeStep={activeStep} onStepClick={scrollToStep} />
+        <div className="mt-20 hidden lg:mt-24 lg:grid lg:grid-cols-[minmax(0,260px)_minmax(0,1fr)] lg:items-start lg:gap-14">
+          <div className="lg:sticky lg:top-28">
+            <div className="mb-4 text-xs font-semibold uppercase tracking-widest text-ink-soft">
+              Fluxo operacional
             </div>
+            <OperationalFlowRail activeStep={activeStep} onStepClick={scrollToStep} />
+          </div>
 
           <div className="space-y-6 lg:space-y-8">
             {storyModules.map((mod) => (
