@@ -74,6 +74,7 @@
   --gradient-night: radial-gradient(ellipse at top, oklch(0.3 0.12 270) 0%, var(--night) 60%);
   --shadow-glow: 0 20px 60px -20px color-mix(in oklab, var(--brand-2) 50%, transparent);
   --shadow-card: 0 1px 2px oklch(0 0 0 / 0.04), 0 8px 24px -8px oklch(0.2 0.05 265 / 0.08);
+  --shadow-elevated: 0 4px 6px oklch(0 0 0 / 0.03), 0 24px 48px -12px oklch(0.2 0.06 265 / 0.14);
 }
 
 .dark {
@@ -112,10 +113,72 @@
   }
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-elevated { box-shadow: var(--shadow-elevated); }
+  .glow-panel {
+    position: relative;
+  }
+  .glow-panel::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(
+      ellipse at 50% 40%,
+      color-mix(in oklab, var(--brand) 22%, transparent),
+      transparent 65%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  .surface-glass {
+    border: 1px solid oklch(1 0 0 / 0.12);
+    background: oklch(1 0 0 / 0.06);
+    backdrop-filter: blur(12px);
+  }
+  .surface-glass-light {
+    border: 1px solid var(--border);
+    background: oklch(1 0 0 / 0.85);
+    backdrop-filter: blur(8px);
+  }
+  .screenshot-frame {
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    background: oklch(1 0 0);
+    box-shadow: var(--shadow-elevated);
+  }
+  .hover-lift {
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevated);
+  }
   .ring-grid {
     background-image:
       linear-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px),
       linear-gradient(90deg, oklch(1 0 0 / 0.04) 1px, transparent 1px);
     background-size: 56px 56px;
+  }
+  .section-cinematic {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  @media (min-width: 1024px) {
+    .section-cinematic {
+      padding-top: 7rem;
+      padding-bottom: 7rem;
+    }
+  }
+  .section-compact {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  @media (min-width: 1024px) {
+    .section-compact {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
   }
 }
