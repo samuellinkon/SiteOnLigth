@@ -5,7 +5,7 @@ import {
   footerOperationLinks,
   footerPlatformLinks,
 } from "@/lib/landing-content";
-import { CONTACT_EMAIL, WHATSAPP_URL } from "@/lib/site-config";
+import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, WHATSAPP_URL } from "@/lib/site-config";
 import logoImg from "@/assets/logo.png";
 
 function FooterLinkColumn({
@@ -123,7 +123,7 @@ export function FooterSection() {
                   className="inline-flex items-center gap-2 text-white/70 transition hover:text-white"
                 >
                   <MessageCircle className="h-4 w-4 shrink-0" />
-                  WhatsApp
+                  WhatsApp {CONTACT_PHONE_DISPLAY}
                 </a>
               </li>
             </ul>
