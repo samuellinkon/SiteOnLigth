@@ -41,8 +41,8 @@ export function PhoneMockupSlider({ slides, autoplayMs = 5000, className = "" }:
     >
       <div className="absolute -inset-8 rounded-3xl bg-brand-grad opacity-20 blur-3xl" />
       <div className="relative z-10 flex flex-col items-center">
-        <div className="relative w-[260px] shrink-0 rounded-[2.5rem] border border-white/15 bg-night p-2 shadow-glow sm:w-[280px]">
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white">
+        <div className="relative w-[260px] shrink-0 rounded-[2.5rem] bg-night p-2 shadow-glow sm:w-[280px]">
+          <div className="relative overflow-hidden rounded-[2rem] bg-night-2">
             {slides.length > 1 && (
               <>
                 <button
@@ -71,7 +71,7 @@ export function PhoneMockupSlider({ slides, autoplayMs = 5000, className = "" }:
               height={1400}
               loading="lazy"
               decoding="async"
-              className="h-[480px] w-full object-contain object-top"
+              className="h-[480px] w-full object-cover object-top"
             />
           </div>
         </div>

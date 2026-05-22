@@ -7,7 +7,7 @@ type Props = {
 
 export function OperationalFlowRail({ activeStep, onStepClick }: Props) {
   return (
-    <nav className="hidden lg:block" aria-label="Etapas da operação">
+    <nav className="hidden lg:block" aria-label="Etapas da operação" role="tablist">
       <ol className="relative space-y-1">
         <div className="absolute left-[15px] top-2 bottom-2 w-px bg-gradient-to-b from-brand via-brand-2/50 to-transparent" />
         {operationalFlowSteps.map((s, i) => {
@@ -17,6 +17,10 @@ export function OperationalFlowRail({ activeStep, onStepClick }: Props) {
             <li key={s.step}>
               <button
                 type="button"
+                role="tab"
+                aria-selected={isActive}
+                id={`flow-step-${stepNum}`}
+                aria-controls="flow-step-panel"
                 onClick={() => onStepClick(stepNum)}
                 className={`hover-lift relative flex w-full gap-4 rounded-xl py-3 pl-10 pr-2 text-left transition ${
                   isActive ? "bg-brand-grad/10 ring-1 ring-brand/25" : "hover:bg-surface"

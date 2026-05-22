@@ -181,4 +181,11 @@
       padding-bottom: 5rem;
     }
   }
+  .rounded-\[2rem\] {
+    border-radius: 10px;
+  }
+  .p-2 {
+    padding: 9px;
+    border-radius: 20px;
+}
 }

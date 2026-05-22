@@ -9,6 +9,8 @@ type Props = {
   ctaHref?: string;
   ctaLabel?: string;
   className?: string;
+  /** Fluxo operacional: foto 100% em cima, texto abaixo */
+  layout?: "default" | "flow";
 };
 
 export function PlatformModuleCard({
@@ -20,14 +22,25 @@ export function PlatformModuleCard({
   ctaHref,
   ctaLabel,
   className = "",
+  layout = "default",
 }: Props) {
+  const isFlow = layout === "flow";
+
   return (
     <article
       className={`rounded-2xl border border-dashed border-border bg-card p-6 shadow-card sm:p-8 lg:p-10 ${className}`}
     >
-      <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-10">
+      <div
+        className={`flex flex-col gap-6 ${
+          isFlow ? "gap-8 lg:gap-10" : "sm:flex-row sm:items-center sm:gap-10"
+        }`}
+      >
         {screenshot && (
-          <div className="screenshot-frame w-full shrink-0 sm:max-w-[240px]">
+          <div
+            className={`screenshot-frame w-full shrink-0 ${
+              isFlow ? "" : "sm:max-w-[240px]"
+            }`}
+          >
             <img
               src={screenshot.src}
               alt={screenshot.alt}
@@ -35,7 +48,9 @@ export function PlatformModuleCard({
               height={800}
               loading="lazy"
               decoding="async"
-              className="h-auto max-h-44 w-full object-contain object-top"
+              className={`h-auto w-full object-contain object-top ${
+                isFlow ? "max-h-[min(28rem,55vh)]" : "max-h-44"
+              }`}
             />
           </div>
         )}

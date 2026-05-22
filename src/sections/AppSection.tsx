@@ -5,9 +5,7 @@ import { SectionHead } from "@/components/landing/SectionHead";
 import { PhoneMockupSlider } from "@/components/landing/PhoneMockupSlider";
 import { Reveal } from "@/components/landing/Reveal";
 
-const appSlides = productComponentGroups
-  .find((g) => g.id === "app-tecnico")!
-  .slides.filter((s) => s.label !== "Dashboard_app_tecnico");
+const appSlides = productComponentGroups.find((g) => g.id === "app-tecnico")!.slides;
 
 export function AppSection() {
   return (

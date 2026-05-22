@@ -9,14 +9,14 @@ import { OperacaoMobileSlider } from "@/components/landing/platform/OperacaoMobi
 
 export function OperationalFlowSection() {
   const [activeStep, setActiveStep] = useState(1);
+  const activeModule =
+    storyModules.find((m) => m.flowStep === activeStep) ?? storyModules[0]!;
 
-  const scrollToStep = useCallback((step: number) => {
+  const selectStep = useCallback((step: number) => {
     setActiveStep(step);
-    const el = document.querySelector(`[data-flow-step="${step}"]`);
-    el?.scrollIntoView({ behavior: "smooth", block: "center" });
   }, []);
 
-  const handleVisible = useCallback((flowStep: number | undefined) => {
+  const handleMobileSlideChange = useCallback((flowStep: number | undefined) => {
     if (flowStep) setActiveStep(flowStep);
   }, []);
 
@@ -32,22 +32,25 @@ export function OperationalFlowSection() {
         </Reveal>
 
         <div className="mt-14">
-          <OperacaoMobileSlider onSlideChange={handleVisible} />
+          <OperacaoMobileSlider onSlideChange={handleMobileSlideChange} />
           <CommandCenterHero />
         </div>
 
         <div className="mt-20 hidden lg:mt-24 lg:grid lg:grid-cols-[minmax(0,260px)_minmax(0,1fr)] lg:items-start lg:gap-14">
-          <div className="lg:sticky lg:top-28">
+          <div className="lg:sticky lg:top-28 lg:self-start">
             <div className="mb-4 text-xs font-semibold uppercase tracking-widest text-ink-soft">
               Fluxo operacional
             </div>
-            <OperationalFlowRail activeStep={activeStep} onStepClick={scrollToStep} />
+            <OperationalFlowRail activeStep={activeStep} onStepClick={selectStep} />
           </div>
 
-          <div className="space-y-6 lg:space-y-8">
-            {storyModules.map((mod) => (
-              <ModuleStoryBlock key={mod.id} module={mod} onVisible={handleVisible} />
-            ))}
+          <div
+            id="flow-step-panel"
+            role="tabpanel"
+            aria-labelledby={`flow-step-${activeStep}`}
+            className="w-full"
+          >
+            <ModuleStoryBlock key={activeModule.id} module={activeModule} />
           </div>
         </div>
       </div>
